@@ -3,6 +3,11 @@ import Landing from "./pages/Landing";
 function App() {
   return (
     <BrowserRouter>
+      <nav>
+        <Link to="/">Dashboard</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/landing">Home</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<div>Dashboard</div>} />
         <Route path="/register" element={<div>Register</div>} />

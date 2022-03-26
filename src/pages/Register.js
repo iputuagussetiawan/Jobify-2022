@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Logo } from "../components";
+import { Logo, FormRow } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 // global context and useNavigate later
 
@@ -16,7 +16,6 @@ function Register() {
 	const [values, setValues] = useState(initialState);
 
 	// global context and useNavigate later
-
 	const handleChange = (e) => {
 		console.log(e.target);
 	};
@@ -32,23 +31,31 @@ function Register() {
 				<h3>Login</h3>
 
 				{/* name field */}
-				<div className="form-row">
-					<label htmlFor="name" className="form-label">
-						name
-					</label>
+        <FormRow
+          type='text'
+          name='name'
+          value={values.name}
+          handleChange={handleChange}
+        />
 
-					<input
-						type="text"
-						value={values.name}
-						name="name"
-						onChange={handleChange}
-						className="form-input"
-					/>
-				</div>
+       {/* email input */}
+       <FormRow
+          type='email'
+          name='email'
+          value={values.email}
+          handleChange={handleChange}
+        />
 
-				<button type="submit" className="btn btn-block">
-					submit
-				</button>
+        {/* password input */}
+        <FormRow
+          type='password'
+          name='password'
+          value={values.password}
+          handleChange={handleChange}
+        />
+        <button type='submit' className='btn btn-block'>
+          submit
+        </button>
 			</form>
 		</Wrapper>
 	);

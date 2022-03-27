@@ -16,7 +16,7 @@ const initialState = {
 function Register() {
 	const [values, setValues] = useState(initialState);
 
-  const {isLoading, showAlert, displayAlert} = useAppContext()
+  const {isLoading, showAlert, displayAlert,registerUser} = useAppContext()
  
 
   const toggleMember = () => {
@@ -36,7 +36,14 @@ function Register() {
       displayAlert()
       return
     }
-    console.log(values)
+    const currentUser={name, email,password}
+
+    if(isMember){
+      console.log('already member');
+    }else{
+      registerUser(currentUser)
+    }
+    //console.log(values)
 	};
 	return (
 		<Wrapper className="full-page">
@@ -70,7 +77,7 @@ function Register() {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type='submit' className='btn btn-block'>
+        <button type='submit' className='btn btn-block' disabled={isLoading}>
           submit
         </button>
 
